@@ -1,0 +1,120 @@
+
+{% extends 'base.html' %}
+
+{% block body_block %}
+{% load static %}
+<style>
+
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 350px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+
+<h2>WhatsApp Analyzed Result</h2>
+
+<p class="text-center"><b>Date Wise Message Count </b></p>
+
+<img  class="mx-auto d-block" style="width: 900px; height: 450px" alt="Date_ Chart" src= "{% static 'output_image\date_chart_name.png' %}"/>
+
+<br>
+<br>
+<div class="row">
+  <div class="column" style="background-color:#aaa;">
+    <h2>Flirt Encounters:</h2>
+    <p><strong>Talkative</strong>: {{result.0}}</p>
+    <p><strong>Less Talkative</strong>: {{result.1}}</p>
+    {% if not result1 %}
+      <p><strong>Filrt Percentage by </strong> {{result.0}}: Wonderfull No Filrting</p>
+    {% else %}
+      <p><strong>Filrt Percentage by </strong> {{result.0}}: {{result.2}}</p>
+    {% endif %}
+    {% if not result1  %}
+      <p><strong>Filrt Percentage by </strong> {{result.1}}: Wonderfull No Filrting</p>
+    {% else %}
+      <p><strong>Filrt Percentage by </strong> {{result.1}}: {{result.3}}</p>
+    {% endif %}
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <h2>Time Encounters:</h2>
+    <p><strong>Most Active Date</strong>: {{stats.0}}</p>
+    <p><strong>Most Active Day</strong>: {{stats.1}}</p>
+    <p><strong>Most Active Hour</strong>: {{stats.2}}</p>
+    <p><strong>Average Number of Message per Day</strong>: {{stats.3}}</p>
+  </div>
+  <div class="column" style="background-color:#ccc;">
+    <h2>Media Encounters</h2>
+
+    {% if not media_count %}
+        <p><strong>Media Count: No shared media</strong></p>
+    {% else %}
+        <p><strong>Media Count:</strong>
+          <br>
+          {% for index, count in media_count.itertuples %}
+            {{index}}:{{count}}
+          <br>
+          {% endfor %}
+    {% endif %}
+
+    {% if not msg_deleted_count  %}
+      <p><strong>Deleted Message Count:</strong> No message was deleted</p>
+    {% else %}
+        <p><strong>Deleted Message Count:</strong></p>
+          {% for index, count in msg_deleted_count.itertuples %}
+            {{index}}:{{count}}
+          {% endfor %}
+    {% endif %}
+
+    {% if not voice_call_count  %}
+        <p>{{ type.voice_call_count}}</p>
+        <p><strong>Missed Voice Call Count:</strong> No Missed Voice Call</p>
+
+    {%else%}
+
+        <p><strong>Missed Voice Call Count:</strong></p>
+          {% for index, count in voice_call_count.itertuples %}
+            {{index}}:{{count}}
+          {%endfor%}
+    {%endif%}
+
+    {% if not video_call_count  %}
+        <p><strong>Missed Video Call Count:</strong>No Missed Video Call</p>
+    {%else%}
+
+        <p><strong>Missed Video Call Count:</strong></p>
+        {% for index, count in video_call_count.itertuples %}
+          {{index}}:{{count}}
+        {%endfor%}
+    {%endif%}
+
+  </div>
+</div>
+<h2>Sentimental Analysis</h2>
+    <img  class="mx-auto d-block" style="width: 900px; height: 450px" alt="posneg" src= "{% static 'output_image\posneg.png' %}"/>
+
+    <h2>Topic Modelling:</h2>
+      <br>
+      {% for i,index ,topic in topic_modelling.itertuples %}
+      {{index}}:{{topic}}
+      <br>
+      {%endfor%}
+<h2>Word Cloud</h2>
+    <img  class="mx-auto d-block" style="width: 900px; height: 450px" alt="posneg" src= "{% static 'output_image\wordcloud.png' %}"/>
+
+
+{% endblock %}

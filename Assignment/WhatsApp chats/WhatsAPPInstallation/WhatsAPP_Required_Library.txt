@@ -1,0 +1,32 @@
+Anaconda Link
+
+For 64 bit
+
+https://repo.anaconda.com/archive/Anaconda3-2019.10-Windows-x86_64.exe
+
+For 32 bit
+
+https://repo.anaconda.com/archive/Anaconda3-2019.10-Windows-x86.exe
+
+
+Step1: conda create --name upload_project
+
+Step2:activate upload_project
+
+Step2: conda install spyder=4.0.0
+
+Step3: follow below library
+
+
+pip install numpy==1.17.4
+pip install pandas==0.25.3
+pip install emoji==0.5.4
+pip install datetime
+pip install nltk==3.4.5
+pip install scikit-learn==0.21.3
+pip install scipy==1.4.1
+pip install matplotlib==3.1.1
+pip install seaborn==0.9.0
+pip install django=3.0.2
+pip install django-crispy-forms==1.8.1
+pip install wordcloud==1.6.0

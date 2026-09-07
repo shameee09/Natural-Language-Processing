@@ -1,0 +1,155 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>WhatsApp Filter Analysis</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+    <style>
+
+        body {
+            background-image: url("{% static 'output_image/backgroud.PNG' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+
+        .navbar-default {
+            background-color: #075E54;
+            border-color: #030033;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Navigation Bar -->
+
+    <nav class="navbar navbar-expand-sm navbar-default navbar-dark">
+
+
+        <!-- Brand / Home -->
+
+        <a class="navbar-brand"
+           href="{% url 'app_uplaod:image_upload' %}">
+            Home
+        </a>
+
+
+        <!-- Navigation Links -->
+
+        <ul class="navbar-nav">
+
+
+            <!-- WhatsApp Filter Analysis -->
+
+            <li class="nav-item">
+
+                <a class="nav-link"
+                   href="{% url 'app_uplaod:image_upload' %}">
+                    WhatsApp Filter Analysis
+                </a>
+
+            </li>
+
+
+            <!-- Result Table -->
+
+            <li class="nav-item">
+
+                <a class="nav-link"
+                   href="{% url 'app_uplaod:result' %}">
+                    Result Table
+                </a>
+
+            </li>
+
+
+            <!-- About Us -->
+
+            <li class="nav-item">
+
+                <a class="nav-link"
+                   href="{% url 'app_uplaod:aboutus' %}">
+                    About Us
+                </a>
+
+            </li>
+
+
+            <!-- Dropdown -->
+
+            <li class="nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle"
+                   href="#"
+                   id="navbardrop"
+                   data-toggle="dropdown">
+
+                    Dropdown link
+
+                </a>
+
+
+                <div class="dropdown-menu">
+
+                    <a class="dropdown-item" href="#">
+                        Link 1
+                    </a>
+
+                    <a class="dropdown-item" href="#">
+                        Link 2
+                    </a>
+
+                    <a class="dropdown-item" href="#">
+                        Link 3
+                    </a>
+
+                </div>
+
+            </li>
+
+
+        </ul>
+
+    </nav>
+
+
+    <!-- Main Content -->
+
+    <div class="container">
+
+        {% block body_block %}
+
+        {% endblock %}
+
+    </div>
+
+
+</body>
+
+</html>
